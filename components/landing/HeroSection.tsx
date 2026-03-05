@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HERO_STYLES } from '@/lib/data';
 
 export default function HeroSection() {
-  const [activeId, setActiveId] = useState('modern-minimal');
+  const [activeId, setActiveId] = useState('scandi-natural');
   const activeStyle = HERO_STYLES.find((s) => s.id === activeId) ?? HERO_STYLES[0];
 
   return (
@@ -44,48 +44,51 @@ export default function HeroSection() {
 
           {/* Left: headline + CTA */}
           <div className="flex-1 max-w-2xl">
-            {/* Eyebrow */}
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-accent text-sm font-medium uppercase tracking-widest mb-4"
-            >
-              Nottingham's Premium Kitchen & Bathroom Specialists
-            </motion.p>
+            {/* Frosted text block */}
+            <div className="bg-white/[0.06] backdrop-blur-md border border-white/[0.09] rounded-3xl p-7 lg:p-9 mb-6 shadow-[0_4px_32px_rgba(0,0,0,0.18)]">
+              {/* Eyebrow */}
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-accent text-sm font-medium uppercase tracking-widest mb-4"
+              >
+                Nottingham's Premium Kitchen & Bathroom Specialists
+              </motion.p>
 
-            {/* Animated headline */}
-            <div className="overflow-hidden mb-6">
+              {/* Animated headline */}
+              <div className="overflow-hidden mb-5">
+                <AnimatePresence mode="wait">
+                  <motion.h1
+                    key={activeId + '-headline'}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -24 }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-display text-text-on-dark leading-tight"
+                    style={{ fontSize: 'clamp(2.25rem, 4.5vw, 4rem)' }}
+                  >
+                    {activeStyle.headline}
+                  </motion.h1>
+                </AnimatePresence>
+              </div>
+
               <AnimatePresence mode="wait">
-                <motion.h1
-                  key={activeId + '-headline'}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -24 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="font-display text-text-on-dark leading-tight"
-                  style={{ fontSize: 'clamp(2.25rem, 4.5vw, 4rem)' }}
+                <motion.p
+                  key={activeId + '-sub'}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="text-text-on-dark/80 text-lg leading-relaxed max-w-xl"
                 >
-                  {activeStyle.headline}
-                </motion.h1>
+                  {activeStyle.subheadline}
+                </motion.p>
               </AnimatePresence>
             </div>
 
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={activeId + '-sub'}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="text-text-on-dark/75 text-lg leading-relaxed mb-8 max-w-xl"
-              >
-                {activeStyle.subheadline}
-              </motion.p>
-            </AnimatePresence>
-
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 mb-10">
+            <div className="flex flex-wrap gap-4 mb-8">
               <Link
                 href="/contact"
                 className="inline-flex items-center h-12 px-7 rounded-full bg-accent text-white font-medium text-sm hover:bg-accent/90 transition-all duration-200 hover:scale-[1.02]"
