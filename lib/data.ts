@@ -310,5 +310,6 @@ export const COVERAGE_AREAS: CoverageArea[] = [
   },
 ];
 
-export const BEFORE_IMAGE = 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=80&auto=format&fit=crop';
-export const AFTER_IMAGE = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80&auto=format&fit=crop';
+// Before: dated oak-cabinet kitchen — After: bright modern renovation
+export const BEFORE_IMAGE = 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=80&auto=format&fit=crop';
+export const AFTER_IMAGE = 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1200&q=80&auto=format&fit=crop';
